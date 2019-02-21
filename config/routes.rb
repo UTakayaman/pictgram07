@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  root to: "pages#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/help" => "pages#help"
+  get 'sessions/new'
+
+  root 'pages#index'
+  get 'pages/help'
+
   resources :users
+
+  get    'login', to: 'sessions#new'
+  post   'login', to: 'sessions#create'
+  delete 'login', to: 'sessions#destroy'
+
 end
